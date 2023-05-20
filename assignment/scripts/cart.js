@@ -8,20 +8,21 @@ console.log('***** Cart Functions *****');
 let basket =[];
 
 
-// Adding items to basket.
-function addItem (item){
-    basket.push(item);
+// Adding items to array.
+function addItem (item, array){
+    array.push(item);
     console.log("You added", item, "to the basket.")
     return true;
 } // end addItem function
 
 // addItem function testing.
 console.log("*** - TEST - for function addItem. ***");
-console.log(addItem('Bananas'));
-console.log(addItem('Apples'));
-console.log(addItem('Salmon'));
-console.log(addItem('Chicken Breast'));
-console.log(addItem('Animal Craackers'));
+console.log(addItem('Bananas', basket));
+console.log(addItem('Apples', basket));
+console.log(addItem('Salmon', basket));
+console.log(addItem('Chicken Breast', basket));
+console.log(addItem('Animal Crackers', basket));
+console.log(addItem('Orange Juice', basket));
 console.log(basket);
 
 
@@ -35,19 +36,18 @@ return true;
 } // end listItems function
 
 // listItems function testing.
-console.log("*** - TEST - for function listItems. Expect listed items. ***");
+console.log("*** - TEST - for function listItems. Expect all array items. ***");
 console.log(listItems(basket));
 console.log(basket);
 
 
-// Empty basket of all items
+// // Empty basket of all items
 function empty(array){
-    if(array === array){
-        array.length = 0;
-        array.pop(array.length - 1)
-        console.log("The basket is empty:", array);
-    } // end empty basket
-    return true;
+   while(array.length > 0){
+    array.pop();
+   }
+   console.log("The basket is empty. There are now", basket.length, "items in this basket.");
+   return true;
 }// end empty function
 
 // empty function testing.
@@ -56,27 +56,27 @@ console.log(empty(basket));
 console.log(basket);
 
 
-// **** Stretch Goal Portion ****
+// // **** Stretch Goal Portion ****
 
-const maxItems = [5];
+// const maxItems = [5];
 
-// Function to determine if array is full
-function itsFull(array){
-    if(array.length > maxItems){
-         console.log("Your basket is over-flowingly full, remove some items!");
-         return true;
-    } // end it's overfilled 
-    else if(array.length = maxItems){
-        console.log("Your basket is full!");
-        return true;
-    } // end it's full 
-    else if(array.length < maxItems){
-        console.log("You have room in your basket");
-        return false;
-    } // end extra room
-} // end itsFull function
+// // Function to determine if array is full
+// function itsFull(array){
+//     if(array.length > maxItems){
+//          console.log("Your basket is over-flowing, remove some items!");
+//          return true;
+//     } // end it's overfilled 
+//     else if(array.length = maxItems){
+//         console.log("Your basket is full!");
+//         return true;
+//     } // end it's full 
+//     else if(array.length < maxItems){
+//         console.log("You have room in your basket");
+//         return false;
+//     } // end extra room
+// } // end itsFull function
 
-// itsFull function testing.
-console.log("*** - TEST - for function itsFull. ***");
-console.log(itsFull(basket)); // empty array 
-console.log(itsFull(maxItems)); // items full in array
+// // itsFull function testing.
+// console.log("*** - TEST - for function itsFull. ***");
+// console.log(itsFull(basket)); // empty array 
+// console.log(itsFull(maxItems)); // items full in array
