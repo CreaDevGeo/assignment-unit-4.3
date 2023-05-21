@@ -4,17 +4,68 @@ console.log('***** Cart Functions *****');
 
 // **** SHOPPING CART PROGRAM (Grocery Store) ****
 
+// - VARIABLES -
 // The cart/basket, items will be added to.
 let basket =[];
+// max amount of itesm allowed in basket
+const maxItems = 5;
+// - END VARIABLES -
 
-
-// Adding items to array.
-function addItem (item, array){
-    array.push(item);
+// - FUNCTIONS -
+// Adding items to basket.
+function addItem (item){
+   if (basket.length >= maxItems) {
+    console.log("Sorry, no more items can be added to your basket.");
+    return false;
+}
+   else if(basket.length < maxItems) {
+    basket.push(item);
     console.log("You added", item, "to the basket.")
     return true;
+}
 } // end addItem function
 
+// // Empty basket of all items
+function empty(){
+    while(basket.length > 0){
+     basket.pop();
+    }
+    console.log("The basket is empty. There are now", basket.length, "items in this basket.");
+    return true;
+ }// end empty function
+
+// Determine if basket is full
+function isFull(basket){
+if(basket.length < maxItems){
+    console.log("You have room for items in your basket.");
+    return false;
+} // end room for more
+else if(basket.length > maxItems){
+    console.log("You have too many items in your basket. Remove some items.");
+    return true;
+} // end too many items
+else if(basket.length = maxItems){
+    console.log("Your basket is full.");
+    return true;
+} // end basket full
+} // end isFull function
+
+// Listing each individual item in basket.
+function listItems(basket){
+    if(basket.length > 0){
+    console.log("The items in the basket are:")
+    for(i = 0; i < basket.length; i ++){
+     console.log(basket[i]); 
+    }// end basket item log
+    } // end listing items in basket
+    else if(basket = []){
+    console.log("The basket is empty.")
+    } // end basket is empty
+return true;
+} // end listItems function
+// - END FUNCTIONS -
+
+// - TESTING -
 // addItem function testing.
 console.log("*** - TEST - for function addItem. ***");
 console.log(addItem('Bananas', basket));
@@ -24,59 +75,35 @@ console.log(addItem('Chicken Breast', basket));
 console.log(addItem('Animal Crackers', basket));
 console.log(addItem('Orange Juice', basket));
 console.log(basket);
-
-
-// Listing each individual item in basket.
-function listItems(array){
-    console.log("The items in the basket are:")
-    for(i = 0; i < array.length; i ++){
-     console.log(array[i]); 
-}// end array item log
-return true;
-} // end listItems function
-
-// listItems function testing.
-console.log("*** - TEST - for function listItems. Expect all array items. ***");
-console.log(listItems(basket));
-console.log(basket);
-
-
-// // Empty basket of all items
-function empty(array){
-   while(array.length > 0){
-    array.pop();
-   }
-   console.log("The basket is empty. There are now", basket.length, "items in this basket.");
-   return true;
-}// end empty function
+// end addItem testing
 
 // empty function testing.
-console.log("*** - TEST - for function empty. Expect empty array. ***");
-console.log(empty(basket));
+console.log("*** - TEST - for function empty. ***");
+console.log(empty()); // Expect empty basket.
 console.log(basket);
+console.log(addItem);
+//end empty testing
 
+// listItems function testing.
+console.log("*** - TEST - for function listItems. Expect all basket items. ***");
+console.log(listItems(basket));
+console.log(basket);
+// end listItems testing
 
-// // **** Stretch Goal Portion ****
+// // isFull function testing.
+console.log("*** - TEST - for function itsFull. ***");
+console.log(isFull(basket)); // empty basket 
+// Adding items to basket with addItem function.
+console.log("*** Adding items to basket. Expect 5 items in basket. ***");
+console.log(addItem("Bread"));
+console.log(addItem("Chips"));
+console.log(addItem("Gogurt"));
+console.log(addItem("Shrimp"));
+console.log(addItem("Lunchables"));
+console.log(isFull(basket)); // full basket 
+// Adding one last item.
+console.log("*** Attempting to add one more item to basket. Expect over-filled basket. ***");
+console.log(addItem("Pizza"));
+console.log(isFull(basket));// Too many
+// end isFull testing
 
-// const maxItems = [5];
-
-// // Function to determine if array is full
-// function itsFull(array){
-//     if(array.length > maxItems){
-//          console.log("Your basket is over-flowing, remove some items!");
-//          return true;
-//     } // end it's overfilled 
-//     else if(array.length = maxItems){
-//         console.log("Your basket is full!");
-//         return true;
-//     } // end it's full 
-//     else if(array.length < maxItems){
-//         console.log("You have room in your basket");
-//         return false;
-//     } // end extra room
-// } // end itsFull function
-
-// // itsFull function testing.
-// console.log("*** - TEST - for function itsFull. ***");
-// console.log(itsFull(basket)); // empty array 
-// console.log(itsFull(maxItems)); // items full in array
