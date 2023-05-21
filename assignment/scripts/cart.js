@@ -17,12 +17,12 @@ function addItem (item){
    if (basket.length >= maxItems) {
     console.log("Sorry, no more items can be added to your basket.");
     return false;
-}
+} // end can't add item
    else if(basket.length < maxItems) {
     basket.push(item);
     console.log("You added", item, "to the basket.")
     return true;
-}
+} // end added item
 } // end addItem function
 
 // // Empty basket of all items
@@ -63,9 +63,20 @@ function listItems(basket){
     } // end basket is empty
 return true;
 } // end listItems function
+
+function removeItems(item){
+    const index = basket.indexOf(item); // assigns index of serched item to index variable
+    let removedItems = basket.splice(index, 1);
+    if(index === -1){
+        console.log(`The item ${item}, is not in your cart.`);
+        return null;
+     } // end item not in cart
+    console.log("An item was removed from your cart:");
+    return removedItems;
+} // end item removed
 // - END FUNCTIONS -
 
-// - TESTING -
+// - FUNCTION TESTING -
 // addItem function testing.
 console.log("*** - TEST - for function addItem. ***");
 console.log(addItem('Bananas', basket));
@@ -107,3 +118,8 @@ console.log(addItem("Pizza"));
 console.log(isFull(basket));// Too many
 // end isFull testing
 
+// removeItems function testing.
+console.log("*** - TEST - for function removeItems. ***");
+console.log(removeItems("Shrimp")); // Item removed
+console.log(removeItems("Candy")); // Item not in basket
+//  // - END FUNCTION TESTING -
